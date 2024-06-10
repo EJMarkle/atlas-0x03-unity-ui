@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public int health = 5;
     public TMP_Text scoreText;
     public TMP_Text healthText;
+    public TMP_Text winLoseText;
+    public GameObject winLoseBG;
 
     /// Preload get rigidbody component 
     void Start()
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Goal"))
         {
             Debug.Log("You win!");
+            ShowWinMessage();
         }
     }
     
@@ -88,5 +91,14 @@ public class PlayerController : MonoBehaviour
     void SetHealthText()
     {
         healthText.text = "Health: " + health.ToString();
+    }
+
+    // displays the win message
+    void ShowWinMessage()
+    {
+        winLoseText.text = "You Win!";
+        winLoseText.color = Color.black;
+        winLoseBG.GetComponent<Image>().color = Color.green;
+        winLoseBG.SetActive(true);
     }
 }
