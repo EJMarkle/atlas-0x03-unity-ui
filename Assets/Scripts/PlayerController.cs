@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,11 +11,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private int score = 0;
     public int health = 5;
+    public TMP_Text scoreText;
 
     /// Preload get rigidbody component 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        SetScoreText();
     }
 
     /// X and Y axis movement
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Score: " + score);
 
             other.gameObject.SetActive(false);
+            SetScoreText();
         }
 
         /// If player collides with trap, decrement health
@@ -66,5 +71,11 @@ public class PlayerController : MonoBehaviour
             health = 5;
             score = 0;
         }
+    }
+    
+    // updates the score text
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
     }
 }
