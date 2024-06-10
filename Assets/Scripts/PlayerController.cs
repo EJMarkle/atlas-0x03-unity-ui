@@ -62,6 +62,12 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You win!");
             ShowWinMessage();
+            StartCoroutine(LoadScene(3f));
+
+            health = 5;
+            score = 0;
+            SetHealthText();
+            SetScoreText();
         }
     }
     
@@ -71,8 +77,9 @@ public class PlayerController : MonoBehaviour
         if (health == 0)
         {
             Debug.Log("Game Over!");
+            ShowGameOverMessage();
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(LoadScene(3f));
 
             health = 5;
             score = 0;
@@ -101,4 +108,21 @@ public class PlayerController : MonoBehaviour
         winLoseBG.GetComponent<Image>().color = Color.green;
         winLoseBG.SetActive(true);
     }
+
+    // displays game over message
+    void ShowGameOverMessage()
+    {
+        winLoseText.text = "Game Over!";
+        winLoseText.color = Color.white;
+        winLoseBG.GetComponent<Image>().color = Color.red;
+        winLoseBG.SetActive(true);
+    }
+
+    // wait coroutine
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }

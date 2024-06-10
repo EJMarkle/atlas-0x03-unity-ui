@@ -2618,6 +2618,8 @@ MonoBehaviour:
   health: 5
   scoreText: {fileID: 40099976}
   healthText: {fileID: 1273421458}
+  winLoseText: {fileID: 162287249}
+  winLoseBG: {fileID: 2113002987}
 --- !u!1 &559173418
 GameObject:
   m_ObjectHideFlags: 0
