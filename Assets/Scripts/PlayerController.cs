@@ -74,6 +74,11 @@ public class PlayerController : MonoBehaviour
     /// check if dead and reload if
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LoadMenuScene();
+        }
+
         if (health == 0)
         {
             Debug.Log("Game Over!");
@@ -123,6 +128,12 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    // loads mennu scene with esc
+    void LoadMenuScene()
+    {
+        SceneManager.LoadScene("menu");
     }
 
 }
