@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
     public int health = 5;
     public TMP_Text scoreText;
+    public TMP_Text healthText;
 
     /// Preload get rigidbody component 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         SetScoreText();
+        SetHealthText();
     }
 
     /// X and Y axis movement
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
             health--;
   
             Debug.Log("Health: " + health);
+            SetHealthText();
         }
 
         /// Win if collide with Goal
@@ -70,6 +73,8 @@ public class PlayerController : MonoBehaviour
 
             health = 5;
             score = 0;
+            SetHealthText();
+            SetScoreText();
         }
     }
     
@@ -77,5 +82,11 @@ public class PlayerController : MonoBehaviour
     void SetScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    // updates the health display
+    void SetHealthText()
+    {
+        healthText.text = "Health: " + health.ToString();
     }
 }
