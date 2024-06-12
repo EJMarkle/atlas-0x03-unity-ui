@@ -8,16 +8,11 @@ public class MainMenu : MonoBehaviour
     public Material trapMat;
     public Material goalMat;
     public Toggle colorblindMode;
-    private Color normalTrapColor;
-    private Color normalGoalColor;
 
-
+    // sets colorblindmode off on start
     void Start()
     {
-        normalTrapColor = trapMat.color;
-        normalGoalColor = goalMat.color;
-
-        colorblindMode.isOn = false;
+        // colorblindMode.isOn = false;
     }
 
     // starts maze scene
@@ -30,8 +25,8 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            trapMat.color = normalTrapColor;
-            goalMat.color = normalGoalColor;
+            trapMat.color = new Color32(255, 0, 0, 1);
+            goalMat.color = new Color32(0, 255, 0, 255);
         }
 
         SceneManager.LoadScene("maze");
